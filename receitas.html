@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Receitas</title>
+    <!-- Incluindo a folha de estilos do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-warning" onload="preencheCatalogo()">
+    <div class="container-fluid">
+        <!-- Div flex-wrap para os painéis das receitas -->
+        <div id="pnlCatalogo" class="d-flex flex-wrap">
+            <!-- Os painéis das receitas serão inseridos aqui -->
+        </div>
+    </div>
+
+    <!-- Incluindo o script -->
+    <script>
+        // Vetor de receitas em formato JSON
+        const receitas = [
+            {
+                "titulo": "Bolo de Chocolate",
+                "imagem": "imagens/bolo.jpg",
+                "preparo": "Misture todos os ingredientes e asse por 30 minutos.",
+                "ingredientes": ["2 xícaras de farinha", "1 xícara de açúcar", "1 xícara de chocolate em pó", "1/2 xícara de óleo", "3 ovos", "1 xícara de leite"]
+            },
+            {
+                "titulo": "Salada Caesar",
+                "imagem": "imagens/salada.jpg",
+                "preparo": "Misture alface, frango e molho. Adicione queijo e croutons.",
+                "ingredientes": ["Alface", "Peito de frango", "Molho Caesar", "Queijo parmesão", "Croutons"]
+            },
+            {
+                "titulo": "Sopa de Legumes",
+                "imagem": "imagens/sopa.jpg",
+                "preparo": "Cozinhe os legumes e bata no liquidificador.",
+                "ingredientes": ["Cenoura", "Batata", "Chuchu", "Água", "Sal", "Cebola"]
+            }
+            // Adicione mais receitas aqui, se necessário
+        ];
+
+        // Função para obter a lista de ingredientes em HTML
+        function getListaIngredientes(receita) {
+            // Inicia a lista com a tag <ul>
+            let lista = '<ul>';
+            // Usa map e reduce para criar os itens de lista
+            lista += receita.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((acc, item) => acc + item, '');
+            // Finaliza a lista com a tag </ul>
+            lista += '</ul>';
+            return lista;
+        }
+
+        // Função para obter o card HTML de uma receita
+        function getCard(receita) {
+            return `
+                <div class="card m-2" style="width: 250px;">
+                    <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${receita.titulo}</h5>
+                        <div class="card-text">
+                            ${getListaIngredientes(receita)}
+                            <hr>
+                            ${receita.preparo}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Função para preencher o catálogo com os cards de receita
+        function preencheCatalogo() {
+            const pnlCatalogo = document.getElementById('pnlCatalogo');
+            // Usa map e reduce para gerar o HTML dos cards
+            pnlCatalogo.innerHTML = receitas.map(receita => getCard(receita)).reduce((acc, card) => acc + card, '');
+        }
+    </script>
+</body>
+</html>
