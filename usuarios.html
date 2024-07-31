@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários de Teste via REST</title>
-    <!-- Incluir o CSS do Bootstrap -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Incluir a biblioteca Vue.js -->
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-    <!-- Incluir a biblioteca jQuery (opcional, mas pode ser útil) -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
    
@@ -19,10 +19,10 @@
         <p class="text-center">Dados fornecidos pelo <a href="https://reqres.in" target="_blank">Reqres.in</a></p>
     </header>
 
-    <!-- Div principal para os usuários -->
+
     <div id="usuarios" class="container-fluid">
         <div class="row">
-            <!-- Painel de usuário -->
+
             <div v-for="(user, index) in users" :key="index" class="col-md-4">
                 <div class="card m-3 p-2">
                     <img :src="user.avatar" class="card-img-top" alt="Avatar do usuário">
@@ -35,25 +35,25 @@
         </div>
     </div>
 
-    <!-- Script Vue.js -->
+
     <script>
         const app = new Vue({
             el: '#usuarios',
             data: function() {
                 return {
-                    users: [] // Vetor inicial vazio
+                    users: [] 
                 }
             },
             mounted: function() {
-                this.loadUsers(); // Carregar usuários ao montar o componente
+                this.loadUsers(); 
             },
             methods: {
                 loadUsers: function() {
-                    // Usar Fetch API para obter os dados dos usuários
+
                     fetch('https://reqres.in/api/users?per_page=10')
                         .then(response => response.json())
                         .then(data => {
-                            this.users = data.data; // Atribuir dados recebidos ao vetor users
+                            this.users = data.data; 
                         })
                         .catch(error => {
                             console.error('Erro ao carregar os dados:', error);
@@ -63,7 +63,7 @@
         });
     </script>
 
-    <!-- Incluir o JavaScript do Bootstrap -->
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
