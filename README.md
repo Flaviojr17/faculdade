@@ -56,9 +56,9 @@
     <h1>Missão Prática Nível 2</h1>
 
 <div>
-    <a href="ordenando.html" target=”_blank”><h1>1° Procedimento</h1></a>
+    <a href="exemplosjs/ordenando.html" target=”_blank”><h1>1° Procedimento</h1></a>
     <br>
-    <a href="receitas.html" target=”_blank”><h1>2° Procedimento</h1></a>
+    <a href="receitas/receitas.html" target=”_blank”><h1>2° Procedimento</h1></a>
     <br>
     <a href="usuarios.html" target=”_blank”><h1>3° Procedimento</h1></a>
 </div>
